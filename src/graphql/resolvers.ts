@@ -1,8 +1,5 @@
-export const  resolvers  = {
+export const resolvers = {
   Query: {
-    Ola() {
-      return 'OLa'
-    }
+    Ola: () => "Hello from the Ola resolver!", // Example resolver implementation
   },
-  Mutations: {},
 };

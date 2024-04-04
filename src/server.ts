@@ -1,19 +1,33 @@
-import { apollo, app } from "./app";
-//import { env } from "./env";
+import { ApolloServer } from '@apollo/server';
+import fastifyApollo from '@as-integrations/fastify';
+import { fastify } from 'fastify';
 
-const startServer = async () => {
-  try {
-    await app.listen({
-      host: "0.0.0.0",
-      port: 3333,
-    });
-    console.log("🚀 HTTP Server Running!");
 
-    await apollo.start();
-  } catch (error) {
-    console.error(error);
-    process.exit(1);
-  }
+
+export const app = fastify({ logger: true });
+
+const typeDefs = `
+type Query {
+  Ola: String
+}
+`;
+
+const resolvers = {
+  Query: {
+    Ola: () => "Hello from the Ola resolver!", // Example resolver implementation
+  },
 };
 
-startServer();
+const server = new ApolloServer({ typeDefs, resolvers });
+
+// Await server.start() before calling fastifyApollo()
+(async () => {
+  await server.start();
+   // Assuming Fastify is installed
+
+  app.register(fastifyApollo(server));
+
+  // ... other Fastify app configuration
+
+  await app.listen({ port: 4000 })
+})();
