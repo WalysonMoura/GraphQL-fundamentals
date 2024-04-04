@@ -20,10 +20,14 @@
     "fastify": "^4.26.2",
     "fastify-plugin": "^4.5.1",
     "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
     "mercurius": "^14.0.0",
     "mercurius-codegen": "^5.0.4"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/client-preset": "^4.2.5",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@types/node": "^20.12.4",
     "prettier": "^3.2.5",
     "tsx": "^4.7.2",

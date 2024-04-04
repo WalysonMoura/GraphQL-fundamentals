@@ -1,6 +1,8 @@
-import { IResolvers } from "mercurius";
-
-export const resolvers: IResolvers = {
-  Query: {},
+export const resolvers = {
+  Query: {
+    Ola() {
+      return 'OLa'
+    }
+  },
   Mutations: {},
 };

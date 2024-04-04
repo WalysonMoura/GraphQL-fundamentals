@@ -1,7 +1,6 @@
 import fastify from "fastify";
-import mercurius from "mercurius";
 
-import { schema } from "@/graphql/schema";
+import { typeDefs } from "@/graphql/typeDefs";
 import { resolvers } from "@/graphql/resolvers";
 import { ApolloServer, BaseContext } from "@apollo/server";
 import fastifyApollo, {
@@ -9,7 +8,6 @@ import fastifyApollo, {
 } from "@as-integrations/fastify";
 
 export const app = fastify({ logger: true });
-
 
 export const apollo = new ApolloServer<BaseContext>({
   typeDefs,
