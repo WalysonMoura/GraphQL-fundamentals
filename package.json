@@ -1,0 +1,32 @@
+{
+  "name": "graphql-fundamentals",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsx src/server.ts",
+    "lint": "eslint src --ext .ts --fix",
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src",
+    "test": "viteste"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@apollo/server": "^4.10.2",
+    "@as-integrations/fastify": "^2.1.1",
+    "fastify": "^4.26.2",
+    "fastify-plugin": "^4.5.1",
+    "graphql": "^16.8.1",
+    "mercurius": "^14.0.0",
+    "mercurius-codegen": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.4",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.3"
+  }
+}
