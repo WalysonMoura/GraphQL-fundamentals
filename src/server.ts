@@ -30,9 +30,13 @@ const typeDefs = `#graphql
     books: [Book]
   }
 `;
+const agora: Date = new Date();
+const hora = String(agora.getHours());
+const minutes = String(agora.getMinutes());
+
 const books = [
   {
-    title: "The Awakening",
+    title: `${hora}`,
     author: "Kate Chopin",
   },
   {
@@ -53,4 +57,4 @@ const { url } = await startStandaloneServer(server, {
   listen: { port: 4000 },
 });
 
-console.log(`🚀  Server ready at: ${url}`);
+console.log(`🚀  Server ready at: ${url} ${hora}:${agora}`);
