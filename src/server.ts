@@ -1,15 +1,10 @@
-import { ApolloServer } from '@apollo/server';
-import fastifyApollo from '@as-integrations/fastify';
-import { fastify } from 'fastify';
+import { ApolloServer } from "@apollo/server";
+import gql from "graphql-tag";
 
-
-
-export const app = fastify({ logger: true });
-
-const typeDefs = `
-type Query {
-  Ola: String
-}
+const typeDefs = gql`
+  type Query {
+    Ola: String
+  }
 `;
 
 const resolvers = {
@@ -21,13 +16,4 @@ const resolvers = {
 const server = new ApolloServer({ typeDefs, resolvers });
 
 // Await server.start() before calling fastifyApollo()
-(async () => {
-  await server.start();
-   // Assuming Fastify is installed
-
-  app.register(fastifyApollo(server));
-
-  // ... other Fastify app configuration
-
-  await app.listen({ port: 4000 })
-})();
+await server.start();
