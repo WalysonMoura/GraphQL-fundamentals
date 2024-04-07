@@ -1,15 +1,17 @@
+import "reflect-metadata";
+
+import path from "node:path";
+
 import { ApolloServer } from "@apollo/server";
-import gql from "graphql-tag";
 
 import { startStandaloneServer } from "@apollo/server/standalone";
-import { GraphQLResolveInfo } from "graphql";
+
+import { buildSchema } from "type-graphql";
+import { ApponintmentsResolver } from "./resolvers/appointments-resolver";
+
 import { randomUUID } from "node:crypto";
 
-interface QueryCurrentUserArgs {
-  // empty for now since I don't know if your schema takes args here
-}
-
-const typeDefs = gql`
+const typeDefs = `
   type User {
     id: String!
     name: String!
@@ -52,13 +54,21 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
+async function bootstrap() {
+  const schema = await buildSchema({
+    resolvers: [ApponintmentsResolver],
+  //  emitSchemaFile: path.resolve(__dirname, "schema.gpl"),
+  });
 
-const { url } = await startStandaloneServer(server, {
-  listen: { port: 4000 },
-});
+  const server = new ApolloServer({
+    schema,
+  });
 
-console.log(`🚀  Server ready at: ${url} }`);
+  const { url } = await startStandaloneServer(server, {
+    listen: { port: 4000 },
+  });
+
+  console.log(`🚀  Server ready at: ${url} }`);
+}
+
+bootstrap();
