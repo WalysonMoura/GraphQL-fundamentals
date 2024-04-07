@@ -37,7 +37,7 @@ const resolvers = {
       return users;
     },
   },
-  
+
   Mutation: {
     createUser: (_: any, args: User) => {
       const user: User = {
