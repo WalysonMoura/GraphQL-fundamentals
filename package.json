@@ -15,6 +15,7 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@apollo/sandbox": "^2.5.1",
     "@apollo/server": "^4.10.2",
     "@as-integrations/fastify": "^2.1.1",
     "fastify": "^4.26.2",
