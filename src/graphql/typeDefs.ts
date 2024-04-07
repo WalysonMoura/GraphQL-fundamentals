@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-export const typeDefs = `
+export const typeDefs = gql`
   type Query {
     Ola: String
   }
