@@ -1,6 +1,13 @@
-import { InputType } from "type-graphql";
+import { Field, InputType } from "type-graphql";
 
 @InputType()
 export class CreateApponintmentInput {
-    startAt:
+  @Field()
+  customerId: string;
+
+  @Field()
+  startsAt: Date;
+
+  @Field()
+  endsAt: Date;
 }

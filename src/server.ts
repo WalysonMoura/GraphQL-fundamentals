@@ -7,10 +7,10 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
 import { buildSchema } from "type-graphql";
-import { ApponintmentsResolver } from "./graphql/resolvers/appointments-resolver";
 
 import { randomUUID } from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { ApponintmentsResolver } from "./graphql/resolvers/appointments-resolver";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -61,6 +61,7 @@ async function bootstrap() {
   const schema = await buildSchema({
     resolvers: [ApponintmentsResolver],
     emitSchemaFile: path.resolve(__dirname, "graphql/schemas", "schema.gql"),
+    validate: true,
   });
 
   const server = new ApolloServer({
