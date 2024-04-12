@@ -2,12 +2,12 @@ import { Field, InputType } from "type-graphql";
 
 @InputType()
 export class CreateApponintmentInput {
-  @Field()
+  @Field(() => String)
   customerId: string;
 
-  @Field()
+  @Field(() => Date)
   startsAt: Date;
 
-  @Field()
+  @Field(() => Date)
   endsAt: Date;
 }
