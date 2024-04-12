@@ -1,7 +1,7 @@
 import fastify from "fastify";
 
-import { typeDefs } from "@/graphql/typeDefs";
-import { resolvers } from "@/graphql/resolvers";
+import { typeDefs } from "tests/typeDefs";
+import { resolvers } from "tests/resolvers";
 import { ApolloServer, BaseContext } from "@apollo/server";
 import fastifyApollo, {
   fastifyApolloDrainPlugin,

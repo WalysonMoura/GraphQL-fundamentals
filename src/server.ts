@@ -7,9 +7,12 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
 import { buildSchema } from "type-graphql";
-import { ApponintmentsResolver } from "./resolvers/appointments-resolver";
+import { ApponintmentsResolver } from "./graphql/resolvers/appointments-resolver";
 
 import { randomUUID } from "node:crypto";
+import { fileURLToPath } from "node:url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const typeDefs = `
   type User {
@@ -57,7 +60,7 @@ const resolvers = {
 async function bootstrap() {
   const schema = await buildSchema({
     resolvers: [ApponintmentsResolver],
-  //  emitSchemaFile: path.resolve(__dirname, "schema.gpl"),
+    emitSchemaFile: path.resolve(__dirname, "graphql/schemas", "schema.gql"),
   });
 
   const server = new ApolloServer({
