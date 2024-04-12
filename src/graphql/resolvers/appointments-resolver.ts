@@ -24,7 +24,7 @@ export class ApponintmentsResolver {
   }
 
   @Mutation(() => Apponintment)
-  async createAppointment(data: CreateApponintmentInput) {
+  async createAppointment(@Arg('data') data: CreateApponintmentInput) {
     const appointment = {
       startsAt: data.startsAt,
       endsAt: data.endsAt,
